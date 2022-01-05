@@ -1,0 +1,72 @@
+{
+    "Routers":{
+       "R0":{
+          "config": [
+            "conf t",
+            "int e1/0",
+            "ip add 200.200.200.2 255.255.255.252",
+            "no shu",
+            "exit",
+            "router eigrp 40",
+            "network 200.200.200.0 0.0.0.3"
+          ]
+       },
+       "R1":{
+        "config":[
+            "conf t",
+            "int e1/0",
+            "ip add 200.200.200.1 255.255.255.252",
+            "no shu",
+            "int e1/1",
+            "ip add 200.200.200.5 255.255.255.252",
+            "no shu",
+            "exit",
+            "router eigrp 40",
+            "network 200.200.200.0 0.0.0.3",
+            "network 200.200.200.4 0.0.0.3",
+            "redis bgp 1",
+            "exit",
+            "router bgp 1",
+            "network 200.200.200.0 mask 255.255.255.252",
+            "network 200.200.200.4 mask 255.255.255.252",
+            "neighbor 200.200.200.6 remote-as 2",
+            "redis eigrp 40"
+          ]
+       },
+       "R2":{
+        "config":[
+            "conf t",
+            "int e1/0",
+            "ip add 200.200.200.6 255.255.255.252",
+            "no shu",
+            "exit",
+            "router bgp 2",
+            "network 200.200.200.4 mask 255.255.255.252",
+            "neighbor 200.200.200.5 remote-as 1"
+          ]
+       },
+       "R3":{
+        "config":[
+            "conf t",
+            "int e1/0",
+            "ip add 200.200.200.6 255.255.255.252",
+            "exit",
+            "router bgp 1",
+            "network 200.200.200.0 mask 255.255.255.252",
+            "network 200.200.200.4 mask 255.255.255.252"
+          ]
+       }
+       ,
+       "R5":{
+        "config":[
+            "conf t",
+            "int e1/0",
+            "ip add 200.200.200.6 255.255.255.252",
+            "exit",
+            "router bgp 1",
+            "network 200.200.200.0 mask 255.255.255.252",
+            "network 200.200.200.4 mask 255.255.255.252"
+          ]
+       }
+    }
+ }
