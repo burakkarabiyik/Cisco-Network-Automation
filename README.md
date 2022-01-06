@@ -9,7 +9,7 @@
 - run main.py
  
 
-### My Topology Start Config
+### Topology Start Config
 	R0 
 		F0/0 IP - 1.1.1.2
 		SSH username = cisco password = cisco
@@ -20,7 +20,7 @@
 		F0/0 IP - 3.3.3.2
 		SSH username = cisco password = cisco
 
-### My Goal
+### Goal
 	R0
 		Giving IP address for e1/0 
 		Adding dinamic routing protocol (EIGRP AS 40)
@@ -35,6 +35,6 @@
 
 
 
-### My Topology
+### Topology
 
 ![](https://raw.githubusercontent.com/burakkarabiyik/cisco-network-automation/main/ss.png)
